@@ -10,8 +10,11 @@ const path = require('path');
     const pathParsed = path.parse(pathToFile);
     const stat = await fsPromises.stat(pathToFile);
 
+    let ext = pathParsed.ext.slice(1);
+    if (ext ==='') ext = 'NA';
+
     if (stat.isFile()) { 
-      console.log(`${pathParsed.name} - ${pathParsed.ext.slice(1)} - ${stat.size}b`);
+      console.log(`${pathParsed.name} - ${ext} - ${stat.size}b`);
     } 
   }
 })();
